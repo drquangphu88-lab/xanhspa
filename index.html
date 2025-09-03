@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xanh Spa - Làm Đẹp Từ Tâm</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FBFBFB;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Style cho modal */
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+        /* Animation fade-in khi cuộn trang */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .service-card-bg {
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover .service-card-bg {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-emerald-800 font-display">
+                <div class="text-3xl font-bold">Xanh Spa</div>
+                <div class="text-xs tracking-wider font-sans font-medium text-emerald-700/80">Làm Đẹp Từ Tâm</div>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="#services" class="text-gray-600 hover:text-emerald-600 transition duration-300">Dịch Vụ</a>
+                <a href="#expert" class="text-gray-600 hover:text-emerald-600 transition duration-300">Chuyên Gia</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-emerald-600 transition duration-300">Cảm Nhận</a>
+                <a href="#about" class="text-gray-600 hover:text-emerald-600 transition duration-300">Về Chúng Tôi</a>
+            </div>
+            <a href="#contact" class="hidden lg:flex items-center gap-2 bg-emerald-700 text-white px-5 py-2.5 rounded-full hover:bg-emerald-800 transition duration-300 shadow-lg shadow-emerald-200">
+                <i data-lucide="calendar-plus"></i>
+                <span>Đặt Lịch Ngay</span>
+            </a>
+            <button id="mobile-menu-button" class="lg:hidden text-gray-600">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-lg absolute top-full left-0 w-full shadow-md">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4 text-center">
+                <a href="#services" class="text-gray-600 hover:text-emerald-600 py-2">Dịch Vụ</a>
+                <a href="#expert" class="text-gray-600 hover:text-emerald-600 py-2">Chuyên Gia</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-emerald-600 py-2">Cảm Nhận</a>
+                <a href="#about" class="text-gray-600 hover:text-emerald-600 py-2">Về Chúng Tôi</a>
+                <a href="#contact" class="mt-2 inline-block bg-emerald-700 text-white px-5 py-2.5 rounded-full hover:bg-emerald-800 transition duration-300">
+                    Đặt Lịch Ngay
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-[70vh] md:h-[90vh] bg-cover bg-center flex items-center" style="background-image: url('https://images.unsplash.com/photo-1544161515-cfd69d90d24c?q=80&w=2070&auto=format&fit=crop');">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
+        <div class="relative container mx-auto px-6 text-white text-center">
+            <h1 class="text-4xl md:text-7xl font-bold font-display leading-tight">Nơi Vẻ Đẹp & Tâm Hồn Hòa Làm Một</h1>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-200">
+                Tái tạo năng lượng, chăm sóc sức khỏe và tôn vinh vẻ đẹp tự nhiên trong một không gian thư giãn và đẳng cấp.
+            </p>
+            
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 md:py-28 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-bold text-emerald-800 font-display">Dịch Vụ Chuyên Biệt</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Giải pháp chăm sóc toàn diện, được thiết kế riêng cho nhu cầu của bạn.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Cards (Redesigned) -->
+                <div class="service-card group rounded-lg shadow-lg overflow-hidden relative cursor-pointer fade-in-section" data-title="Massage Body - Dưỡng Sinh" data-image="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1770&auto=format&fit=crop" data-details="<p>Liệu pháp kết hợp giữa kỹ thuật massage trị liệu hiện đại và nguyên lý dưỡng sinh đông y, tác động sâu vào các huyệt đạo, giúp đả thông kinh lạc, giải tỏa tắc nghẽn.</p><h4 class='font-semibold mt-4 mb-2'>Lợi ích chính:</h4><ul class='list-disc list-inside text-left'><li>Giảm đau mỏi cơ bắp, vai gáy.</li><li>Cải thiện tuần hoàn máu, tăng cường năng lượng.</li><li>Giảm stress, lo âu, giúp ngủ ngon và sâu hơn.</li><li>Hỗ trợ thải độc tố ra khỏi cơ thể.</li></ul>">
+                    <div class="service-card-bg absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1770&auto=format&fit=crop')"></div>
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-all duration-300"></div>
+                    <div class="relative p-6 flex flex-col justify-end h-72 text-white">
+                        <h3 class="font-semibold text-2xl font-display">Massage Dưỡng Sinh</h3>
+                        <p class="text-sm mt-2 opacity-80">Thư giãn sâu & phục hồi năng lượng</p>
+                    </div>
+                </div>
+                
+                <div class="service-card group rounded-lg shadow-lg overflow-hidden relative cursor-pointer fade-in-section" data-title="Thẩm Mỹ Nội Khoa" data-image="https://images.unsplash.com/photo-1512290746433-34b07f237839?q=80&w=1770&auto=format&fit=crop" data-details="<p>Các giải pháp thẩm mỹ nội khoa không phẫu thuật, được thực hiện trực tiếp bởi bác sĩ chuyên khoa, đảm bảo an toàn và hiệu quả tối ưu.</p><h4 class='font-semibold mt-4 mb-2'>Chi tiết:</h4><ul class='list-disc list-inside text-left'><li><strong>Mesotherapy:</strong> Cung cấp dưỡng chất, làm căng bóng, trẻ hóa da.</li><li><strong>Botox:</strong> Xóa nếp nhăn động ở trán, đuôi mắt, cau mày.</li><li><strong>Filler:</strong> Làm đầy thái dương, rãnh cười, tạo hình môi, cằm V-line.</li><li><strong>PRP:</strong> Huyết tương giàu tiểu cầu giúp trị sẹo rỗ, trẻ hóa da tự thân.</li></ul><p class='mt-4 text-sm text-red-600'>*Tất cả các dịch vụ này đều cần được tư vấn trực tiếp bởi bác sĩ.</p>">
+                    <div class="service-card-bg absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1512290746433-34b07f237839?q=80&w=1770&auto=format&fit=crop')"></div>
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-all duration-300"></div>
+                    <div class="relative p-6 flex flex-col justify-end h-72 text-white">
+                        <h3 class="font-semibold text-2xl font-display">Thẩm Mỹ Nội Khoa</h3>
+                        <p class="text-sm mt-2 opacity-80">Trẻ hóa da an toàn, không phẫu thuật</p>
+                    </div>
+                </div>
+
+                <div class="service-card group rounded-lg shadow-lg overflow-hidden relative cursor-pointer fade-in-section" data-title="Điều Trị Nám & Laser" data-image="https://images.unsplash.com/photo-1616394584738-d67f2b431f85?q=80&w=1770&auto=format&fit=crop" data-details="<p>Ứng dụng công nghệ Laser tiên tiến nhất để điều trị các vấn đề về sắc tố da như nám, tàn nhang, đồi mồi, cũng như các vấn đề khác như sẹo rỗ, lỗ chân lông to.</p><h4 class='font-semibold mt-4 mb-2'>Công nghệ nổi bật:</h4><ul class='list-disc list-inside text-left'><li>Laser PicoSure Pro cho nám, tàn nhang.</li><li>Laser CO2 Fractional cho sẹo rỗ, trẻ hóa.</li><li>Phác đồ điều trị cá nhân hóa bởi bác sĩ.</li></ul>">
+                    <div class="service-card-bg absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1616394584738-d67f2b431f85?q=80&w=1770&auto=format&fit=crop')"></div>
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-all duration-300"></div>
+                    <div class="relative p-6 flex flex-col justify-end h-72 text-white">
+                        <h3 class="font-semibold text-2xl font-display">Điều Trị Nám & Laser</h3>
+                        <p class="text-sm mt-2 opacity-80">Tái tạo làn da sáng mịn, đều màu</p>
+                    </div>
+                </div>
+
+                <div class="service-card group rounded-lg shadow-lg overflow-hidden relative cursor-pointer fade-in-section" data-title="Chăm Sóc Da Chuyên Sâu" data-image="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1770&auto=format&fit=crop" data-details="<p>Quy trình chăm sóc da chuyên sâu từ cơ bản đến nâng cao, giải quyết các vấn đề như mụn, da khô, lão hóa. Sử dụng dược mỹ phẩm cao cấp, an toàn cho mọi loại da.</p><h4 class='font-semibold mt-4 mb-2'>Dịch vụ tiêu biểu:</h4><ul class='list-disc list-inside text-left'><li>Lấy nhân mụn chuẩn y khoa.</li><li>Điện di vitamin C làm sáng da.</li><li>Liệu trình phục hồi da nhạy cảm.</li><li>Cấy tảo xoắn, vi kim.</li></ul>">
+                     <div class="service-card-bg absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1770&auto=format&fit=crop')"></div>
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-all duration-300"></div>
+                    <div class="relative p-6 flex flex-col justify-end h-72 text-white">
+                        <h3 class="font-semibold text-2xl font-display">Chăm Sóc Da</h3>
+                        <p class="text-sm mt-2 opacity-80">Nuôi dưỡng làn da khỏe mạnh từ gốc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Consultant Section -->
+    <section id="expert" class="py-20 md:py-28 bg-emerald-50/50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 fade-in-section">
+                <div class="lg:w-2/5 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-full h-full border-4 border-emerald-200 rounded-lg z-0"></div>
+                        <img src="https://drquangphu88-lab.github.io/assets/img/hero-bg.jpg" alt="Bác sĩ Quang Phú" class="relative rounded-lg shadow-2xl w-80 h-96 object-cover z-10">
+                    </div>
+                </div>
+                <div class="lg:w-3/5 text-center lg:text-left">
+                    <h2 class="text-4xl md:text-5xl font-bold text-emerald-800 font-display">Gặp Gỡ Chuyên Gia Của Chúng Tôi</h2>
+                    <h3 class="text-2xl font-semibold text-emerald-900 mt-6">Bác sĩ Quang Phú</h3>
+                    <p class="text-emerald-700 font-medium mt-1">Cố Vấn Chuyên Môn & Chuyên Gia Da Liễu Thẩm Mỹ</p>
+                    <p class="mt-4 text-gray-600 max-w-xl mx-auto lg:mx-0">
+                        Với nhiều năm kinh nghiệm, Bác sĩ Quang Phú là người trực tiếp xây dựng và giám sát các phác đồ điều trị chuyên sâu tại Spa Xanh. Bác sĩ luôn đặt tiêu chí an toàn, hiệu quả và vẻ đẹp tự nhiên lên hàng đầu, mang lại giải pháp tối ưu cho từng khách hàng.
+                    </p>
+                    <a href="https://drquangphu88-lab.github.io/" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex items-center gap-2 bg-transparent border-2 border-emerald-700 text-emerald-700 font-bold px-8 py-3 rounded-full hover:bg-emerald-700 hover:text-white transition duration-300">
+                        <span>Tìm Hiểu Thêm</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 md:py-28 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-bold text-emerald-800 font-display">Khách Hàng Nói Về Chúng Tôi</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Sự hài lòng của bạn là niềm tự hào lớn nhất của Spa Xanh.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-emerald-50/60 p-8 rounded-lg shadow-sm fade-in-section">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/50x50/a7f3d0/064e3b?text=L" alt="Lan Anh" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-emerald-900">Chị Lan Anh</h4>
+                            <p class="text-sm text-gray-500">Điều trị nám</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Da mình cải thiện rõ rệt sau liệu trình trị nám tại đây. Bác sĩ và các bạn kỹ thuật viên rất tận tình. Cảm ơn Spa Xanh rất nhiều!"</p>
+                </div>
+                <div class="bg-emerald-50/60 p-8 rounded-lg shadow-sm fade-in-section" style="transition-delay: 150ms;">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/50x50/a7f3d0/064e3b?text=M" alt="Minh Tuấn" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-emerald-900">Anh Minh Tuấn</h4>
+                            <p class="text-sm text-gray-500">Massage dưỡng sinh</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Mình là dân văn phòng nên đau mỏi vai gáy thường xuyên. Từ khi đến massage định kỳ ở đây, mình thấy đỡ hẳn. Không gian rất thư giãn."</p>
+                </div>
+                <div class="bg-emerald-50/60 p-8 rounded-lg shadow-sm fade-in-section" style="transition-delay: 300ms;">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/50x50/a7f3d0/064e3b?text=H" alt="Hồng Hạnh" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-emerald-900">Bạn Hồng Hạnh</h4>
+                            <p class="text-sm text-gray-500">Chăm sóc da mụn</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Nặn mụn ở đây không hề đau và thâm như chỗ khác. Da mình giờ đã sạch mụn và láng mịn hơn rất nhiều. Highly recommend nhé!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-28 bg-emerald-800 text-white">
+        <div class="container mx-auto px-6 text-center fade-in-section">
+            <h2 class="text-4xl md:text-5xl font-bold font-display">Sẵn Sàng Cho Sự Thay Đổi?</h2>
+            <p class="mt-4 text-emerald-200 max-w-2xl mx-auto">
+                Liên hệ với chúng tôi ngay hôm nay để nhận tư vấn miễn phí từ chuyên gia và đặt lịch cho liệu trình của bạn.
+            </p>
+            <div class="mt-10 flex justify-center items-center">
+                 <a href="tel:0394777772" class="bg-white text-emerald-800 font-bold px-10 py-4 rounded-full hover:bg-emerald-100 transition duration-300 shadow-lg">
+                    Hotline: 0394 7777 72
+                </a>
+            </div>
+             <div class="mt-12 text-emerald-200">
+                <p><strong>Địa chỉ:</strong> Hẻm 26 Hùng Vương, Xã Hồ Tràm, TP. HCM</p>
+                <p class="mt-2"><strong>Giờ mở cửa:</strong> 9:00 - 20:00, Thứ Hai - Chủ Nhật</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="font-bold text-lg">Xanh Spa</p>
+                    <p class="text-sm text-gray-400">&copy; 2025. All rights reserved.</p>
+                </div>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i data-lucide="facebook" class="w-6 h-6"></i>
+                        <span class="sr-only">Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Service Detail Modal (Nội dung không đổi) -->
+    <div id="serviceModal" class="modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 hidden opacity-0">
+        <div class="modal-content bg-white rounded-lg shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto transform scale-95">
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start">
+                    <h2 id="modalTitle" class="text-2xl md:text-3xl font-bold text-emerald-800 font-display mb-4"></h2>
+                    <button id="closeModalBtn" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/3">
+                        <img id="modalImage" src="" alt="" class="rounded-lg w-full h-auto object-cover aspect-[3/4]">
+                    </div>
+                    <div id="modalDetails" class="md:w-2/3 text-gray-600"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Khởi tạo Lucide Icons
+        lucide.createIcons();
+
+        // Script cho Modal
+        const serviceCards = document.querySelectorAll('.service-card');
+        const modal = document.getElementById('serviceModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalImage = document.getElementById('modalImage');
+        const modalDetails = document.getElementById('modalDetails');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        const openModal = (title, image, details) => {
+            modalTitle.textContent = title;
+            modalImage.src = image;
+            modalImage.alt = title;
+            modalDetails.innerHTML = details;
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('.modal-content').classList.remove('scale-95');
+            }, 10);
+        };
+
+        const closeModal = () => {
+            modal.classList.add('opacity-0');
+            modal.querySelector('.modal-content').classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        };
+
+        serviceCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.dataset.title;
+                const image = card.dataset.image;
+                const details = card.dataset.details;
+                openModal(title, image, details);
+            });
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Script cho hiệu ứng fade-in khi cuộn trang
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Script for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+    </script>
+
+</body>
+</html>
+
+
